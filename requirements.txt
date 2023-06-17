@@ -5,3 +5,4 @@ pandas_datareader==0.10.0
 keras==2.4.3
 streamlit==0.85.1
 yfinance==0.1.64
+tensorflow==2.12.*
