@@ -13,11 +13,16 @@ end_date = "2023-06-11"
 st.title('Stock Trend Prediction')
 
 user_input = st.text_input('Enter Stock Ticker')
-Info = yf.Ticker(user_input)
-# Initializing variable for retrieving market prices
-df = Info.history(start=start_date, end=end_date, period='1mo')
-# Printing the historical market prices in the output
-st.text("Market Prices data : ")
+if not user_input:
+    st.warning('Please enter a stock ticker symbol.')
+    st.stop()
+
+try:
+    Info = yf.Ticker(user_input)
+    df = Info.history(start=start_date, end=end_date, period='1mo')
+except Exception as e:
+    st.error(f"Error retrieving stock data: {str(e)}")
+    st.stop()
 #df= df.drop('Dividends', 'Stock Splits', axis= 1)
 #print(df)
 #df= data.DataReader()
@@ -109,10 +114,3 @@ plt.xlabel('Time')
 plt.ylabel('Price')
 plt.legend()
 st.pyplot(fig2)
-
-
-
-
-
-
-
