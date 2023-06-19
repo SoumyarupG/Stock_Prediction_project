@@ -11,6 +11,9 @@ This project predicts stock trends using historical market prices and displays v
 - keras
 - streamlit
 - yfinance
+- tensorflow
+- scikit-learn
+- sklearn
 
 ## Description
 
